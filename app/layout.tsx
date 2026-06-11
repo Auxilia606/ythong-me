@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { InitColorSchemeScript } from "@mui/material";
-import Providers from "@/src/app/providers";
+import Providers from "@/app/providers";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
