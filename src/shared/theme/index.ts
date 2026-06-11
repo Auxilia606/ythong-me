@@ -1,6 +1,7 @@
 import { inputBaseClasses } from "@mui/material/InputBase";
 import { outlinedInputClasses } from "@mui/material/OutlinedInput";
 import { createTheme } from "@mui/material/styles";
+import type {} from "@mui/material/themeCssVarsAugmentation";
 
 const theme = createTheme({
   cssVariables: { cssVarPrefix: "", colorSchemeSelector: "class" },
@@ -51,6 +52,13 @@ const theme = createTheme({
         },
         "*::-webkit-scrollbar-corner": {
           backgroundColor: "transparent",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
         },
       },
     },
