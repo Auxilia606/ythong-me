@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
+import { InitColorSchemeScript } from "@mui/material";
+import Providers from "@/src/app/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  display: "swap",
+  weight: "45 920",
+  fallback: [
+    "Pretendard",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "system-ui",
+    "sans-serif",
+  ],
+  adjustFontFallback: "Arial",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="ko"
+      className={`${pretendard.className} ${pretendard.variable}`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>
+        <InitColorSchemeScript attribute="class" />
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
