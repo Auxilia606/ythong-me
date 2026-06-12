@@ -8,11 +8,11 @@ Use it when you are:
 
 - creating a new widget, feature UI, or shared UI component with MUI
 - refactoring a component that mixes structure and large inline style blocks
-- deciding between `styled(...)`, `sx`, subcomponents, or extraction into another slice
+- deciding between local `sx`, subcomponents, or extraction into another slice
 
 ## Primary Rule
 
-Prefer `styled(...)` for structural or repeated styles.
+Keep component structure readable and keep visual values tied to the MUI theme.
 
 The render body should read mostly as:
 
@@ -23,35 +23,18 @@ The render body should read mostly as:
 
 Large style objects should not dominate the JSX tree.
 
-## When To Prefer `styled(...)`
+## Local `sx`
 
-Use `styled(...)` when one or more of the following are true:
-
-- the component has multiple layout sections such as `Root`, `Header`, `Content`, `Footer`, `Card`
-- responsive styles make the JSX harder to read
-- the same visual slot has a clear semantic role
-- the component is expected to grow
-- the style block is longer than the JSX element is meaningful
-
-Typical examples:
-
-- sidebars
-- headers
-- cards with internal sections
-- sticky panels
-- reusable form shells
-
-## When `sx` Is Still Fine
-
-Use `sx` for small, local, one-off adjustments.
+Use `sx` when styles are local to the rendered MUI component and remain easy to scan.
 
 Good uses:
 
 - a single spacing or alignment tweak on a child element
-- a one-line color override
+- color, border, or background values tied to `theme.vars.palette`
+- responsive layout that is still readable in place
 - very small prototype code that is likely to be deleted
 
-Avoid `sx` when it turns into a long inline object with breakpoints, layered backgrounds, sticky positioning, or visual states. That should move into `styled(...)`.
+Avoid letting `sx` become a large unrelated style block. If the component becomes hard to read, extract meaningful subcomponents or move stable constants near the component.
 
 ## Overriding MUI Built-In Styles
 
@@ -66,7 +49,7 @@ Typical cases:
 Prefer:
 
 - exported class objects such as `accordionClasses`, `accordionSummaryClasses`, `buttonClasses`
-- slot-aware selectors inside `sx` or `styled(...)`
+- slot-aware selectors inside `sx`
 - a single clear override source instead of mixing root styles and ad hoc exceptions
 
 Avoid:
@@ -98,13 +81,12 @@ Default structure for a UI file:
 1. imports
 2. static data or local constants
 3. exported component
-4. styled slot declarations
 
-This keeps the first screen focused on structure and behavior, while still keeping styles colocated with the component.
+This keeps the first screen focused on structure and behavior. Extract subcomponents only when a section has its own meaning, behavior, or reuse pressure.
 
 ## Slot Naming
 
-Name styled elements by role, not by implementation detail.
+Name visual slots and subcomponents by role, not by implementation detail.
 
 Prefer:
 
@@ -137,10 +119,10 @@ Use semantic HTML when the slot has a semantic role.
 
 Examples:
 
-- `styled("aside")` for sidebar navigation
-- `styled("nav")` for navigation groups
-- `styled("section")` for standalone sections
-- `styled("header")` or `styled("footer")` when appropriate
+- `component="aside"` for sidebar navigation
+- `component="nav"` for navigation groups
+- `component="section"` for standalone sections
+- `component="header"` or `component="footer"` when appropriate
 
 Do not wrap everything in generic `div` or `Box` elements if the structure has clearer semantics.
 
@@ -152,7 +134,7 @@ Use:
 
 - `theme.spacing(...)`
 - `theme.breakpoints.up(...)`
-- `theme.vars.palette.*` for palette values that must track light/dark schemes
+- `theme.vars.palette.*` for all color, border color, and background color values
 - `theme.header.height` and `theme.snb.width` for app layout tokens
 
 Hardcoded values are acceptable when they are intentional component-level constants, for example:
@@ -169,63 +151,77 @@ This project enables MUI CSS variables and ships both light and dark color schem
 
 Rules:
 
-- prefer `theme.vars.palette.*` over raw `var(--palette-...)` whenever the value comes from the MUI theme
-- prefer `theme.vars.palette.*Channel` for alpha-based colors instead of hand-writing `var(--palette-...Channel)`
+- use `theme.vars.palette.*` for every color value authored in MUI component code
+- use `theme.vars.palette.*Channel` for alpha-based colors instead of hand-writing `var(--palette-...Channel)`
 - prefer theme extensions such as `theme.header.height` and `theme.snb.width` over mirrored app-level CSS variables in component code
 - use raw `var(--...)` only when integrating with non-MUI CSS, third-party markup, or a custom property that does not exist on the theme
-- avoid introducing new direct `var(--palette-...)` references in `styled(...)` or `sx`
-- if a value is passed into MUI color utilities such as `alpha(...)`, `lighten(...)`, `darken(...)`, or `emphasize(...)`, use `theme.palette.*` because those helpers require a resolved color value, not a CSS variable string
+- do not introduce direct `var(--palette-...)` references in `sx` or component styles
+- avoid color math helpers such as `alpha(...)`, `lighten(...)`, `darken(...)`, and `emphasize(...)` when they would require falling back to `theme.palette.*`
 
 Prefer:
 
 ```tsx
-const Header = styled("header")(({ theme }) => ({
-  borderBottom: `1px solid ${theme.vars.palette.divider}`,
-  backgroundColor: `rgba(${theme.vars.palette.background.paperChannel} / 0.88)`,
-  color: theme.vars.palette.text.secondary,
-  height: theme.header.height,
-}));
+<AppBar
+  color="transparent"
+  elevation={0}
+  sx={{
+    borderBottom: "1px solid",
+    borderColor: theme.vars.palette.divider,
+    backgroundColor: theme.vars.palette.background.paper,
+  }}
+/>
 ```
 
 Avoid:
 
 ```tsx
-const Header = styled("header")(({ theme }) => ({
-  borderBottom: `1px solid ${theme.palette.divider}`,
-  backgroundColor: "rgba(var(--palette-background-paperChannel) / 0.88)",
-  color: "var(--palette-text-secondary)",
-  height: "var(--header-height)",
-}));
+<AppBar
+  sx={{
+    borderColor: theme.palette.divider,
+    backgroundColor: "var(--palette-background-paper)",
+  }}
+/>
 ```
 
-Use `theme.palette.*` only when an API requires a resolved color string and `theme.vars` is not accepted cleanly. That should be the exception, not the default authoring style.
-
-Example:
+Existing project example:
 
 ```tsx
-const accent = theme.palette.dataViz.brand;
-
-const MetricIcon = styled(Box)({
-  backgroundColor: alpha(accent, 0.1),
-  color: accent,
-});
+// src/widgets/app-header/ui/app-header.tsx
+<AppBar
+  position="fixed"
+  color="transparent"
+  elevation={0}
+  sx={{
+    borderBottom: "1px solid",
+    borderColor: theme.vars.palette.divider,
+    backgroundColor: theme.vars.palette.background.paper,
+  }}
+/>
 ```
 
-Avoid passing `theme.vars.palette.*` directly into color math helpers. Values such as `var(--palette-dataViz-brand)` are valid CSS, but they are not valid inputs for MUI color parsing utilities.
+For alpha values, use palette channels:
+
+```tsx
+<Box
+  sx={{
+    backgroundColor: `rgba(${theme.vars.palette.background.paperChannel} / 0.88)`,
+  }}
+/>
+```
 
 ## Breakpoints
 
-Keep responsive behavior inside the styled slot definition instead of scattering breakpoint logic across JSX.
+Keep responsive behavior close to the component it affects.
 
 Prefer:
 
 ```tsx
-const Aside = styled("aside")(({ theme }) => ({
-  width: "100%",
-  [theme.breakpoints.up("md")]: {
-    width: theme.snb.width,
-  },
-}));
+<Box
+  component="aside"
+  sx={{
+    width: { xs: "100%", md: theme.snb.width },
+  }}
+/>
 ```
 
 Avoid:
@@ -233,16 +229,19 @@ Avoid:
 ```tsx
 <Box
   sx={{
-    width: { xs: "100%", md: theme.snb.width },
+    width: { xs: "100%" },
+  }}
+/>
+<Box
+  sx={{
+    width: { md: theme.snb.width },
   }}
 />
 ```
 
-for large structural slots.
+when the split hides one responsive rule across unrelated elements.
 
 ## Composition Boundaries
-
-Use `styled(...)` to improve readability inside a component file.
 
 Create a separate component when:
 
@@ -299,7 +298,7 @@ Keep styling decisions separate from business logic.
 
 Rules:
 
-- do not compute business state inside styled declarations
+- do not compute business state inside style declarations
 - do not hide business behavior in visual prop naming
 - pass explicit visual variants when styling truly depends on state
 - keep data fetching, domain logic, and orchestration outside presentational slots
@@ -312,41 +311,24 @@ If you are deciding whether a UI value should be derived during render, stored i
 ```tsx
 export function ExamplePanel() {
   return (
-    <Root>
-      <Header>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box component="header" sx={{ p: 2 }}>
         <Title variant="h6">Title</Title>
-      </Header>
+      </Box>
 
-      <Content>
-        <Section>
-          <SectionLabel variant="caption">Recent items</SectionLabel>
-        </Section>
-      </Content>
-    </Root>
+      <Box sx={{ flex: 1 }}>
+        <Box component="section" sx={{ p: 2 }}>
+          <Typography
+            variant="caption"
+            sx={{ color: theme.vars.palette.text.secondary, fontWeight: 700 }}
+          >
+            Recent items
+          </Typography>
+        </Box>
+      </Box>
+    </Box>
   );
 }
-
-const Root = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
-});
-
-const Header = styled("header")(({ theme }) => ({
-  padding: theme.spacing(2),
-}));
-
-const Content = styled(Box)({
-  flex: 1,
-});
-
-const Section = styled("section")(({ theme }) => ({
-  padding: theme.spacing(2),
-}));
-
-const SectionLabel = styled(Typography)(({ theme }) => ({
-  color: theme.vars.palette.text.secondary,
-  fontWeight: 700,
-}));
 ```
 
 ## Review Checklist
@@ -354,8 +336,8 @@ const SectionLabel = styled(Typography)(({ theme }) => ({
 Before finalizing a MUI component, verify:
 
 - the JSX reads as structure first, not style first
-- structural styles live in `styled(...)`
-- `sx` is limited to small local exceptions
+- `sx` remains local and readable
+- all color, border color, and background color values use `theme.vars.palette.*`
 - loading states preserve the final layout when possible
 - skeletons are applied to missing content slots instead of replacing the whole component by default
 - slot names describe roles clearly
