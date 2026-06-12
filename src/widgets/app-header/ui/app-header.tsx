@@ -30,7 +30,6 @@ export function AppHeader() {
             justifyContent: "space-between",
             gap: theme.spacing(2),
             minHeight: "100%",
-            paddingInline: theme.spacing(2),
           }}
         >
           <Button component={Link} href="/">
