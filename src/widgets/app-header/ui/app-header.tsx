@@ -3,6 +3,7 @@
 import theme from "@/shared/theme";
 import { AppBar, Button, Container, Stack, Toolbar } from "@mui/material";
 import Link from "next/link";
+import { DarkModeSwitch } from "./dark-mode-switch";
 
 export function AppHeader() {
   return (
@@ -42,7 +43,7 @@ export function AppHeader() {
             Youngtaek Hong
           </Button>
 
-          <Stack direction="row">
+          <Stack direction="row" sx={{ alignItems: "center" }}>
             <Button component={Link} href="/">
               Home
             </Button>
@@ -55,6 +56,7 @@ export function AppHeader() {
             <Button component={Link} href="/skills">
               Skills
             </Button>
+            <DarkModeSwitch />
           </Stack>
         </Toolbar>
       </Container>
