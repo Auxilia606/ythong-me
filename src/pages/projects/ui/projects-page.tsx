@@ -1,13 +1,28 @@
 "use client";
 
-import { Container, Grid, Stack } from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import { ProjectCard, ProjectCardProps } from "./project-card";
 
 function ProjectsPage() {
   return (
     <Container maxWidth="xl">
       <Stack spacing={{ xs: 2, md: 2.5 }}>
-        Projects
+        <Stack spacing={1}>
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{
+              fontWeight: 600,
+            }}
+          >
+            Projects
+          </Typography>
+          <Typography color="textSecondary">
+            A selection of architectural software solutions and creative
+            experiments focusing on performance, scalability, and user-centric
+            design
+          </Typography>
+        </Stack>
         <Grid container spacing={2}>
           {project.map((v) => (
             <Grid key={v.id} size={4}>
