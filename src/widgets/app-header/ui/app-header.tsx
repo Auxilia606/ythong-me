@@ -55,7 +55,6 @@ export function AppHeader() {
             <Button component={Link} href="/skills">
               Skills
             </Button>
-            <Button variant="contained">Contact me</Button>
           </Stack>
         </Toolbar>
       </Container>
