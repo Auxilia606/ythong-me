@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import type { ReactNode } from "react";
 
+import { AppFooter } from "@/widgets/app-footer";
 import { AppHeader } from "@/widgets/app-header";
 import theme from "@/shared/theme";
 
@@ -30,6 +31,7 @@ export default function MainLayout({
       >
         {children}
       </Box>
+      <AppFooter />
     </Box>
   );
 }
