@@ -1,0 +1,60 @@
+{
+  // Place your snippets for typescriptreact here. Each snippet is defined under a snippet name and has a prefix, body and 
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+  // same ids are connected.
+  "Mui SvgIcon": {
+    "prefix": "msvg",
+    "body": [
+      "import type { SvgIconProps } from '@mui/material'",
+      "import { SvgIcon } from '@mui/material'",
+      "",
+      "export default function ${1:${TM_FILENAME_BASE/(^|[-_\\s]+)([a-zA-Z0-9])/${2:/upcase}/g}}(props: SvgIconProps) {",
+      "  return (",
+      "    <SvgIcon {...props}>",
+      "      {/* 여기에 svg 텍스트를 입력합니다. 필요에 따라 jsx 문법으로 바꿔야 할 수 있습니다. */}",
+      "    </SvgIcon>",
+      "  )",
+      "}",
+    ]
+  },
+  "Component": {
+    "prefix": "comp",
+    "body": [
+      "import { Stack } from '@mui/material'",
+      "",
+      "export default function ${1:$TM_FILENAME_BASE}() {",
+      "  return <Stack></Stack>",
+      "}",
+    ]
+  },
+  "Dto": {
+    "prefix": "dto",
+    "body": [
+      "import z from 'zod'",
+      "",
+      "const ${1:$TM_FILENAME_BASE} = z.object()",
+      "",
+      "export default ${1:$TM_FILENAME_BASE}",
+      "export type ${1:$TM_FILENAME_BASE}Type = z.infer<typeof ${1:$TM_FILENAME_BASE}>",
+    ]
+  },
+  "create api": {
+    "prefix": "capi",
+    "body": [
+      "import z from 'zod'",
+      "import createApi from '@/shared/api/createApi'",
+      "import { schemas } from '@/shared/dto/openapiSchemas'",
+      "",
+      "export default createApi({",
+      "  method: 'GET',",
+      "  url: '',",
+      "  // queryKey: () => [],",
+      "  // pathS: ,",
+      "  // queryS: ,",
+      "  // bodyS: ,",
+      "  responseS: ,",
+      "})",
+    ]
+  },
+}
