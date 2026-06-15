@@ -50,7 +50,7 @@ const project: ProjectCardProps[] = [
     description:
       "• 관리자 플랫폼 아키텍처 구축\n• 권한 기반 메뉴 관리 시스템 개발\n• AI융합서비스 운영 관리 기능 개발",
     image: "/project/prj-2024-jb.png",
-    skill: ["React", "material-ui", "@tanstack/react-query", "react-quill"],
+    skill: ["Next.js", "material-ui", "@tanstack/react-query", "react-quill"],
   },
   {
     id: "dweax002",
@@ -67,5 +67,21 @@ const project: ProjectCardProps[] = [
       "• 기관 메타데이터 기반 데이터 등록 기능 개발\n• 데이터 결합 및 가공 UI 구현\n• 데이터 처리 전/후 비교 화면 개발",
     image: "/project/prj-2024-nia.png",
     skill: ["React", "antd", "recoil", "@tanstack/react-query"],
+  },
+  {
+    id: "kokozi002",
+    title: "애플리케이션 백오피스 개발",
+    description:
+      "• 글로벌 진출 대비 i18n 관리 기능 개발\n• API 인가 권한 관리 기능 개발\n• React 컴포넌트 리렌더링 지연 이슈 개선",
+    image: "/project/prj-2022-kokozi.png",
+    skill: ["Next.js", "material-ui"],
+  },
+  {
+    id: "kokozi001",
+    title: "코코지 모바일 애플리케이션 개발",
+    description:
+      "• 미디어 스트리밍 기능 개발\n• 플레이리스트 리뷰 등록/조회 기능 개발",
+    image: "/project/prj-2022-kokozi.png",
+    skill: ["React Native", "Firebase"],
   },
 ];

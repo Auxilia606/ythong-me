@@ -18,7 +18,7 @@ type ProjectCardProps = {
 
 function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
   return (
-    <Card>
+    <Card sx={{ height: "100%" }}>
       <CardMedia
         sx={{
           height: 240,
