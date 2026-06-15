@@ -16,7 +16,7 @@ export default function MainLayout({
         display: "flex",
         flexDirection: "column",
         bgcolor: theme.vars.palette.background.default,
-        pt: 8,
+        pt: 10,
       }}
     >
       <AppHeader />
@@ -26,7 +26,6 @@ export default function MainLayout({
           flex: 1,
           minHeight: 0,
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
         }}
       >
         {children}
