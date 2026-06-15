@@ -32,7 +32,13 @@ export function AppHeader() {
             minHeight: "100%",
           }}
         >
-          <Button component={Link} href="/">
+          <Button
+            component={Link}
+            href="/"
+            sx={{
+              fontWeight: 600,
+            }}
+          >
             Youngtaek Hong
           </Button>
 
