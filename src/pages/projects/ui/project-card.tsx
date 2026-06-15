@@ -1,4 +1,3 @@
-import theme from "@/shared/theme";
 import {
   Card,
   CardContent,
@@ -32,8 +31,8 @@ function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
           </Typography>
           <Typography
             variant="body2"
+            color="textSecondary"
             sx={{
-              color: theme.vars.palette.text.secondary,
               whiteSpace: "pre-line",
             }}
           >
