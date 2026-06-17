@@ -21,40 +21,14 @@
   "Component": {
     "prefix": "comp",
     "body": [
-      "import { Stack } from '@mui/material'",
+      "import { Stack } from '@mui/material';",
       "",
-      "export default function ${1:$TM_FILENAME_BASE}() {",
-      "  return <Stack></Stack>",
+      "function ${1:${TM_FILENAME_BASE/(^|[-_\\s]+)([a-zA-Z0-9])/${2:/upcase}/g}}() {",
+      "  return <Stack></Stack>;",
       "}",
-    ]
-  },
-  "Dto": {
-    "prefix": "dto",
-    "body": [
-      "import z from 'zod'",
       "",
-      "const ${1:$TM_FILENAME_BASE} = z.object()",
+      "export { ${1:${TM_FILENAME_BASE/(^|[-_\\s]+)([a-zA-Z0-9])/${2:/upcase}/g}} };",
       "",
-      "export default ${1:$TM_FILENAME_BASE}",
-      "export type ${1:$TM_FILENAME_BASE}Type = z.infer<typeof ${1:$TM_FILENAME_BASE}>",
-    ]
-  },
-  "create api": {
-    "prefix": "capi",
-    "body": [
-      "import z from 'zod'",
-      "import createApi from '@/shared/api/createApi'",
-      "import { schemas } from '@/shared/dto/openapiSchemas'",
-      "",
-      "export default createApi({",
-      "  method: 'GET',",
-      "  url: '',",
-      "  // queryKey: () => [],",
-      "  // pathS: ,",
-      "  // queryS: ,",
-      "  // bodyS: ,",
-      "  responseS: ,",
-      "})",
     ]
   },
 }

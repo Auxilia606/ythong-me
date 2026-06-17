@@ -3,6 +3,7 @@
 import { Container, Stack } from "@mui/material";
 import { HeroBanner } from "./hero-banner";
 import { TechnicalHighlights } from "./technical-highlights";
+import { CareerJourney } from "./career-journey";
 
 function HomePage() {
   return (
@@ -10,6 +11,7 @@ function HomePage() {
       <Stack spacing={{ xs: 2, md: 2.5 }}>
         <HeroBanner />
         <TechnicalHighlights />
+        <CareerJourney />
       </Stack>
     </Container>
   );
