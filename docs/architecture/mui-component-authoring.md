@@ -10,6 +10,8 @@ Use it when you are:
 - refactoring a component that mixes structure and large inline style blocks
 - deciding between local `sx`, subcomponents, or extraction into another slice
 
+For reusable MUI SVG icon components under `src/shared/icon`, also read [Icon Authoring Guide](./icon-authoring.md).
+
 ## Primary Rule
 
 Keep component structure readable and keep visual values tied to the MUI theme.

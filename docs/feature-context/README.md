@@ -8,6 +8,10 @@ Use these documents when you need to understand what a user-facing feature does,
 
 Feature context documents should be added here as stable feature boundaries emerge.
 
+## References
+
+- [MUI Reference](./mui-llms.md): Material UI documentation links for agent and contributor lookup.
+
 ## Refresh Guidance
 
 When a feature is added or significantly changed:

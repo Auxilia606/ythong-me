@@ -95,8 +95,8 @@ Use this order when placing new code:
 ## Related Conventions
 
 - For MUI-based UI composition and refactoring rules, read [MUI Component Authoring Guide](./mui-component-authoring.md).
+- For reusable MUI SVG icon components, read [Icon Authoring Guide](./icon-authoring.md).
 - For local state, derived values, and `useEffect` design rules, read [React State and Effects Guide](./react-state-and-effects.md).
-- For Swagger/OpenAPI client generation with Orval, read the [`shared` layer API client rules](./feature-sliced-design/shared.md#orval-generated-api).
 
 ## References
 
