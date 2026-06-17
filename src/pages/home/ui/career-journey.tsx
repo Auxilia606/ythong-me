@@ -1,5 +1,15 @@
 import ArrowTrendingUp from "@/shared/icon/arrow-trending-up";
-import { Chip, Paper, Stack, Typography } from "@mui/material";
+import theme from "@/shared/theme";
+import {
+  Chip,
+  Paper,
+  Stack,
+  Step,
+  StepContent,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
 
 function CareerJourney() {
   return (
@@ -25,42 +35,77 @@ function CareerJourney() {
               p: 2,
             }}
           >
-            <Stack spacing={1.5}>
-              <Typography color="textSecondary">
-                {v.startDate} ~ {v.endDate ?? "Present"}
-              </Typography>
-
-              <Stack
-                direction="row"
-                spacing={1}
-                sx={{
-                  alignItems: "center",
-                }}
-              >
-                <Typography variant="h6" component="div">
-                  {v.company}
+            <Stack direction="row">
+              <Stepper orientation="vertical">
+                <Step active>
+                  <StepLabel
+                    slots={{
+                      stepIcon: () => (
+                        <Stack
+                          sx={{
+                            border: `1px solid ${theme.vars.palette.primary.main}`,
+                            borderRadius: 24,
+                            width: 24,
+                            height: 24,
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Stack
+                            sx={{
+                              border: `2px solid ${theme.vars.palette.primary.main}`,
+                              borderRadius: 20,
+                              width: 18,
+                              height: 18,
+                            }}
+                          ></Stack>
+                        </Stack>
+                      ),
+                    }}
+                  ></StepLabel>
+                  <StepContent>
+                    <Stack sx={{ height: "80px" }}></Stack>
+                  </StepContent>
+                </Step>
+                <Step active></Step>
+              </Stepper>
+              <Stack spacing={1.5}>
+                <Typography color="textSecondary">
+                  {v.startDate} ~ {v.endDate ?? "Present"}
                 </Typography>
-                <Chip size="small" variant="filled" label={v.role} />
-              </Stack>
 
-              <Typography
-                variant="body2"
-                sx={{
-                  whiteSpace: "pre-line",
-                }}
-              >
-                {v.descr}
-              </Typography>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "center",
+                  }}
+                >
+                  <Typography variant="h6" component="div">
+                    {v.company}
+                  </Typography>
+                  <Chip size="small" variant="filled" label={v.role} />
+                </Stack>
 
-              <Stack direction="row" spacing={1}>
-                {v.skills.map((v2, i2) => (
-                  <Chip
-                    key={i2}
-                    label={v2}
-                    variant="outlined"
-                    color="primary"
-                  />
-                ))}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {v.descr}
+                </Typography>
+
+                <Stack direction="row" spacing={1}>
+                  {v.skills.map((v2, i2) => (
+                    <Chip
+                      key={i2}
+                      label={v2}
+                      variant="outlined"
+                      color="primary"
+                    />
+                  ))}
+                </Stack>
               </Stack>
             </Stack>
           </Paper>
