@@ -8,7 +8,7 @@ import { CareerJourney } from "./career-journey";
 function HomePage() {
   return (
     <Container maxWidth="xl">
-      <Stack spacing={{ xs: 2, md: 2.5 }}>
+      <Stack spacing={4}>
         <HeroBanner />
         <TechnicalHighlights />
         <CareerJourney />
