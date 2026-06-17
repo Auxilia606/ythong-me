@@ -1,7 +1,13 @@
 "use client";
 
 import BuildingOffice2 from "@/shared/icon/building-office-2";
+import Check from "@/shared/icon/check";
 import {
+  Chip,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   Paper,
   Stack,
   Step,
@@ -51,9 +57,29 @@ function ExperienceStepper() {
                   px: 2,
                 }}
               >
-                {v.achievements.map((v2, i2) => (
-                  <Typography key={i2}>{v2}</Typography>
-                ))}
+                <Stack spacing={2}>
+                  <List disablePadding>
+                    {v.achievements.map((v2, i2) => (
+                      <ListItem key={i2} disableGutters disablePadding>
+                        <ListItemIcon sx={{ minWidth: 24 }}>
+                          <Check sx={{ width: 16, height: 16 }} />
+                        </ListItemIcon>
+                        <ListItemText primary={v2} />
+                      </ListItem>
+                    ))}
+                  </List>
+                  <Stack direction="row" spacing={1}>
+                    {v.skills.map((v2) => (
+                      <Chip
+                        color="primary"
+                        size="medium"
+                        variant="outlined"
+                        key={v2}
+                        label={v2}
+                      />
+                    ))}
+                  </Stack>
+                </Stack>
               </Paper>
             </Stack>
           </StepContent>
