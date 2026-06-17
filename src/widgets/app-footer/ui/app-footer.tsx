@@ -11,6 +11,7 @@ export function AppFooter() {
     <Box
       component="footer"
       sx={{
+        mt: 2,
         py: 2,
         minHeight: 72,
         borderTop: "1px solid",
