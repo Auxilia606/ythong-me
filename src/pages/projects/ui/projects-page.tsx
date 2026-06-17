@@ -56,7 +56,7 @@ const project: ProjectCardProps[] = [
     title: "문제해결은행 플랫폼 고도화",
     description:
       "• 맞춤형 데이터레시피 생성 서비스 고도화\n• 맞춤지원사업 프로세스 개편\n• 자원예약 시스템, 경진대회 신청/관리 시스템 구축",
-    image: "/project/prj-2024-datahub.png",
+    image: "/project/prj-2025-datahub.png",
     skill: ["React", "material-ui", "@tanstack/react-query", "draft.js"],
   },
   {
