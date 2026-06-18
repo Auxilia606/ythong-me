@@ -5,7 +5,8 @@ import CodeBracket from "@/shared/icon/code-bracket";
 import Cube from "@/shared/icon/cube";
 import ShieldCheck from "@/shared/icon/shield-check";
 import Square3Stack3d from "@/shared/icon/square-3-stack-3d";
-import { Button, Chip, Divider, Stack, Typography } from "@mui/material";
+import { Button, Chip, Divider, Paper, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -91,16 +92,15 @@ function HeroBanner() {
         </Stack>
       </Stack>
 
-      <Stack
-        sx={{
-          width: 400,
-          height: 400,
-          bgcolor: "gray",
-          borderRadius: 2,
-        }}
-      >
-        {/* NOTE: 개발자 사진으로 대체 */}
-      </Stack>
+      <Paper elevation={4}>
+        <Stack
+          sx={{
+            p: 1,
+          }}
+        >
+          <Image src="/image/profile.png" alt="" width={400} height={500} />
+        </Stack>
+      </Paper>
     </Stack>
   );
 }
