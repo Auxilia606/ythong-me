@@ -5,14 +5,16 @@ import { ProjectCard, ProjectCardProps } from "./project-card";
 
 function ProjectsPage() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
       <Stack spacing={{ xs: 2, md: 2.5 }}>
         <Stack spacing={1}>
           <Typography
             variant="h3"
             component="div"
             sx={{
+              fontSize: { xs: 36, md: 48 },
               fontWeight: 600,
+              lineHeight: 1.12,
             }}
           >
             Projects
@@ -25,7 +27,7 @@ function ProjectsPage() {
         </Stack>
         <Grid container spacing={2}>
           {project.map((v) => (
-            <Grid key={v.id} size={4}>
+            <Grid key={v.id} size={{ xs: 12, sm: 6, lg: 4 }}>
               <ProjectCard {...v} />
             </Grid>
           ))}

@@ -47,7 +47,7 @@ type Certification = {
 
 function SkillsPage() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
       <Stack spacing={{ xs: 6, md: 8 }}>
         <Stack spacing={{ xs: 2, md: 2.5 }}>
           <Typography
@@ -55,6 +55,7 @@ function SkillsPage() {
             component="h1"
             sx={{
               maxWidth: 980,
+              fontSize: { xs: 34, sm: 42, md: 48 },
               fontWeight: 700,
               lineHeight: 1.15,
               letterSpacing: 0,
@@ -147,6 +148,7 @@ function SectionTitle({
         variant="h4"
         component="h2"
         sx={{
+          fontSize: { xs: 28, md: 34 },
           fontWeight: 700,
           lineHeight: 1.2,
           letterSpacing: 0,

@@ -24,7 +24,7 @@ export function AppFooter() {
           direction="row"
           spacing={1}
           sx={{
-            justifyContent: "flex-end",
+            justifyContent: { xs: "center", sm: "flex-end" },
           }}
         >
           <IconButton

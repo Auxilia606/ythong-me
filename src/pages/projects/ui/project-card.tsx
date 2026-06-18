@@ -20,13 +20,21 @@ function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
     <Card sx={{ height: "100%" }}>
       <CardMedia
         sx={{
-          height: 240,
+          height: { xs: 180, sm: 220, md: 240 },
         }}
         image={image}
       />
       <CardContent>
         <Stack spacing={1.5}>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{
+              fontSize: { xs: 20, md: 24 },
+              lineHeight: 1.25,
+            }}
+          >
             {title}
           </Typography>
           <Typography
@@ -39,7 +47,12 @@ function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
             {description}
           </Typography>
 
-          <Stack direction="row" spacing={1}>
+          <Stack
+            direction="row"
+            useFlexGap
+            spacing={1}
+            sx={{ flexWrap: "wrap" }}
+          >
             {skill.map((v) => (
               <Chip key={v} label={v} variant="outlined" color="primary" />
             ))}

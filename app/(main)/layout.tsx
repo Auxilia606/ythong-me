@@ -17,7 +17,7 @@ export default function MainLayout({
         display: "flex",
         flexDirection: "column",
         bgcolor: theme.vars.palette.background.default,
-        pt: 10,
+        pt: { xs: 12, sm: 10 },
       }}
     >
       <AppHeader />

@@ -12,7 +12,13 @@ import React from "react";
 
 function HeroBanner() {
   return (
-    <Stack direction="row">
+    <Stack
+      direction={{ xs: "column", md: "row" }}
+      spacing={{ xs: 3, md: 4 }}
+      sx={{
+        alignItems: { xs: "stretch", md: "center" },
+      }}
+    >
       <Stack
         sx={{
           flex: 1,
@@ -27,7 +33,9 @@ function HeroBanner() {
           variant="h3"
           component="div"
           sx={{
+            fontSize: { xs: 36, sm: 44, md: 48 },
             fontWeight: 600,
+            lineHeight: 1.12,
           }}
         >
           Youngtaek Hong
@@ -37,6 +45,7 @@ function HeroBanner() {
           component="div"
           color="primary"
           sx={{
+            fontSize: { xs: 18, md: 20 },
             fontWeight: 600,
           }}
         >
@@ -45,6 +54,7 @@ function HeroBanner() {
         <Typography
           sx={{
             maxWidth: 800,
+            lineHeight: 1.75,
           }}
         >
           AI SaaS, 데이터 플랫폼, 엔터프라이즈 웹 애플리케이션 분야에서 7년 이상
@@ -55,6 +65,7 @@ function HeroBanner() {
         </Typography>
         <Typography
           sx={{
+            lineHeight: 1.75,
             strong: {
               color: "secondary.main",
             },
@@ -67,35 +78,56 @@ function HeroBanner() {
           중요하게 생각합니다.
         </Typography>
 
-        <Stack>
+        <Stack sx={{ width: { xs: "100%", sm: "auto" } }}>
           <Button
             variant="contained"
             size="large"
             endIcon={<ArrowRight />}
             LinkComponent={Link}
             href="/projects"
+            sx={{ width: { xs: "100%", sm: "auto" } }}
           >
             프로젝트 보기
           </Button>
         </Stack>
 
-        <Stack direction="row" useFlexGap spacing={2}>
+        <Stack
+          direction="row"
+          useFlexGap
+          spacing={{ xs: 1.25, md: 2 }}
+          sx={{
+            flexWrap: "wrap",
+          }}
+        >
           {techStack.map((v, i, arr) => (
             <React.Fragment key={i}>
               <Stack direction="row" useFlexGap spacing={1}>
                 {v.icon}
                 <Typography>{v.label}</Typography>
               </Stack>
-              {i !== arr.length - 1 && <Divider orientation="vertical" />}
+              {i !== arr.length - 1 && (
+                <Divider
+                  orientation="vertical"
+                  sx={{ display: { xs: "none", md: "block" } }}
+                />
+              )}
             </React.Fragment>
           ))}
         </Stack>
       </Stack>
 
-      <Paper elevation={4}>
+      <Paper
+        elevation={4}
+        sx={{
+          flex: "0 1 440px",
+          alignSelf: { xs: "center", md: "stretch" },
+          width: { xs: "100%", md: "auto" },
+        }}
+      >
         <Stack
           sx={{
             p: 1,
+            alignItems: "stretch",
           }}
         >
           <Image
@@ -104,6 +136,10 @@ function HeroBanner() {
             width={400}
             height={500}
             loading="eager"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
           />
         </Stack>
       </Paper>

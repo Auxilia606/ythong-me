@@ -8,8 +8,8 @@ import { InterestingProblems } from "./interesting-problems";
 
 function HomePage() {
   return (
-    <Container maxWidth="xl">
-      <Stack spacing={4}>
+    <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
+      <Stack spacing={{ xs: 3, md: 4 }}>
         <HeroBanner />
         <TechnicalHighlights />
         <InterestingProblems />

@@ -7,6 +7,7 @@ import LightBulb from "@/shared/icon/light-bulb";
 import Square3Stack3dSolid from "@/shared/icon/square-3-stack-3d-solid";
 import UserGroupSolid from "@/shared/icon/user-group-solid";
 import {
+  Box,
   List,
   ListItem,
   ListItemIcon,
@@ -31,7 +32,19 @@ function TechnicalHighlights() {
         </Typography>
       </Stack>
 
-      <Stack direction="row" useFlexGap spacing={2}>
+      <Box
+        sx={(theme) => ({
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+          [theme.breakpoints.down("lg")]: {
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          },
+          [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "1fr",
+          },
+        })}
+      >
         {techItems.map((v, i) => {
           const TechIcon = v.Icon;
           return (
@@ -91,7 +104,7 @@ function TechnicalHighlights() {
             </Paper>
           );
         })}
-      </Stack>
+      </Box>
     </Stack>
   );
 }

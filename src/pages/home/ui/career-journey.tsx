@@ -26,7 +26,7 @@ function CareerJourney() {
         </Typography>
       </Stack>
 
-      <Stack direction="row" useFlexGap spacing={2}>
+      <Stack direction={{ xs: "column", lg: "row" }} useFlexGap spacing={2}>
         {careerItems.map((v, i) => (
           <Paper
             key={i}
@@ -64,7 +64,7 @@ function CareerJourney() {
                     }}
                   ></StepLabel>
                   <StepContent>
-                    <Stack sx={{ height: "80px" }}></Stack>
+                    <Stack sx={{ height: { xs: 48, sm: 80 } }}></Stack>
                   </StepContent>
                 </Step>
                 <Step active></Step>
@@ -75,10 +75,10 @@ function CareerJourney() {
                 </Typography>
 
                 <Stack
-                  direction="row"
+                  direction={{ xs: "column", sm: "row" }}
                   spacing={1}
                   sx={{
-                    alignItems: "center",
+                    alignItems: { xs: "flex-start", sm: "center" },
                   }}
                 >
                   <Typography variant="h6" component="div">
@@ -96,7 +96,12 @@ function CareerJourney() {
                   {v.descr}
                 </Typography>
 
-                <Stack direction="row" spacing={1}>
+                <Stack
+                  direction="row"
+                  useFlexGap
+                  spacing={1}
+                  sx={{ flexWrap: "wrap" }}
+                >
                   {v.skills.map((v2, i2) => (
                     <Chip
                       key={i2}

@@ -29,7 +29,7 @@ function InterestingProblems() {
 
       <Grid container spacing={2}>
         {problems.map((v, i) => (
-          <Grid key={i} size={4}>
+          <Grid key={i} size={{ xs: 12, md: 4 }}>
             <Paper
               sx={{
                 flex: 1,
@@ -44,13 +44,20 @@ function InterestingProblems() {
                   height: "100%",
                 }}
               >
-                <Stack direction="row" spacing={1}>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  sx={{
+                    alignItems: "flex-start",
+                  }}
+                >
                   <Stack
                     sx={{
                       borderRadius: 100,
                       bgcolor: "primary.main",
                       width: 32,
                       height: 32,
+                      flexShrink: 0,
                       alignItems: "center",
                       justifyContent: "center",
                     }}
@@ -86,7 +93,9 @@ function InterestingProblems() {
                     endIcon={<ArrowTopRightOnSquare />}
                     LinkComponent={Link}
                     href={v.link}
-                    sx={{ alignSelf: "flex-end" }}
+                    sx={{
+                      alignSelf: { xs: "stretch", sm: "flex-end" },
+                    }}
                   >
                     자세히보기
                   </Button>

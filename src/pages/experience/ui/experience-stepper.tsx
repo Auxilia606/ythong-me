@@ -26,15 +26,15 @@ function ExperienceStepper() {
           <StepContent>
             <Stack spacing={0.5} sx={{}}>
               <Stack
-                direction={"row"}
+                direction={{ xs: "column", sm: "row" }}
                 spacing={1}
                 sx={{
-                  alignItems: "center",
+                  alignItems: { xs: "flex-start", sm: "center" },
                   justifyContent: "space-between",
                 }}
               >
                 <Stack
-                  direction={"row"}
+                  direction="row"
                   spacing={1}
                   sx={{
                     alignItems: "center",
@@ -45,7 +45,7 @@ function ExperienceStepper() {
                     {v.company}
                   </Typography>
                 </Stack>
-                <Typography component={"span"} color="textSecondary">
+                <Typography component="span" color="textSecondary">
                   {v.startDate} ~ {v.endDate ?? "재직중"}
                 </Typography>
               </Stack>
@@ -68,7 +68,12 @@ function ExperienceStepper() {
                       </ListItem>
                     ))}
                   </List>
-                  <Stack direction="row" spacing={1}>
+                  <Stack
+                    direction="row"
+                    useFlexGap
+                    spacing={1}
+                    sx={{ flexWrap: "wrap" }}
+                  >
                     {v.skills.map((v2) => (
                       <Chip
                         color="primary"

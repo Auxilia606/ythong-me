@@ -20,7 +20,7 @@ export function AppHeader() {
         top: 0,
         right: 0,
         left: 0,
-        py: 1,
+        py: { xs: 0.75, sm: 1 },
       }}
     >
       <Container maxWidth="xl">
@@ -28,8 +28,10 @@ export function AppHeader() {
           disableGutters
           variant="dense"
           sx={{
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: { xs: "stretch", sm: "center" },
             justifyContent: "space-between",
-            gap: theme.spacing(2),
+            gap: { xs: 0.5, sm: 2 },
             minHeight: "100%",
           }}
         >
@@ -37,13 +39,33 @@ export function AppHeader() {
             component={Link}
             href="/"
             sx={{
+              alignSelf: { xs: "flex-start", sm: "center" },
               fontWeight: 600,
+              px: { xs: 0, sm: 1 },
+              whiteSpace: "nowrap",
             }}
           >
             Youngtaek Hong
           </Button>
 
-          <Stack direction="row" sx={{ alignItems: "center" }}>
+          <Stack
+            direction="row"
+            sx={(theme) => ({
+              alignItems: "center",
+              gap: { xs: 0.25, sm: 0 },
+              maxWidth: "100%",
+              overflowX: "auto",
+              pb: { xs: 0.25, sm: 0 },
+              scrollbarWidth: "none",
+              [theme.breakpoints.down("sm")]: {
+                mx: -1,
+                px: 1,
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              },
+            })}
+          >
             <Button component={Link} href="/">
               Home
             </Button>
