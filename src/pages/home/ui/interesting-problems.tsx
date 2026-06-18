@@ -44,28 +44,30 @@ function InterestingProblems() {
                   height: "100%",
                 }}
               >
-                <Stack
-                  sx={{
-                    borderRadius: 100,
-                    bgcolor: "primary.main",
-                    width: 32,
-                    height: 32,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Typography
+                <Stack direction="row" spacing={1}>
+                  <Stack
                     sx={{
-                      color: "primary.contrastText",
-                      fontWeight: 700,
+                      borderRadius: 100,
+                      bgcolor: "primary.main",
+                      width: 32,
+                      height: 32,
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    {i + 1}
+                    <Typography
+                      sx={{
+                        color: "primary.contrastText",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {i + 1}
+                    </Typography>
+                  </Stack>
+                  <Typography variant="h6" component="div">
+                    {v.title}
                   </Typography>
                 </Stack>
-                <Typography variant="h6" component="div">
-                  {v.title}
-                </Typography>
                 <List
                   disablePadding
                   sx={{
@@ -102,7 +104,7 @@ export { InterestingProblems };
 
 const problems = [
   {
-    title: "OpenAPI 기반 API 계층 표준화 및 인증 재발급 아키텍처",
+    title: "OpenAPI 기반 API 계층 표준화",
     descr: [
       "• OpenAPI 기반 코드 생성 체계(Orval)를 도입",
       "• API, React Query Hook, Query Key 자동 생성 API 계층을 구축",
@@ -119,5 +121,14 @@ const problems = [
       "• Drag & Drop 기반 메뉴 이동 및 정렬 시스템 구현",
     ],
     link: "https://typical-earwig-65a.notion.site/OpenAPI-API-382351322877805d8678d46f45ec4d91",
+  },
+  {
+    title: "맞춤형 데이터레시피 생성 고도화",
+    descr: [
+      "• SSE 기반 AI 데이터레시피 생성 기능 구축 및 실시간 UI 연동",
+      "• 생성 단계별 상태코드 관리와 사용자 노출 이벤트 분리",
+      "• 트리형 메뉴 CRUD 및 메뉴 유형 관리 기능 개발",
+    ],
+    link: "https://typical-earwig-65a.notion.site/3833513228778071989cf9c7a914101c",
   },
 ];
