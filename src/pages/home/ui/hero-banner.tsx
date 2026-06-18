@@ -98,7 +98,13 @@ function HeroBanner() {
             p: 1,
           }}
         >
-          <Image src="./image/profile.png" alt="" width={400} height={500} />
+          <Image
+            src="./image/profile.png"
+            alt=""
+            width={400}
+            height={500}
+            loading="eager"
+          />
         </Stack>
       </Paper>
     </Stack>
