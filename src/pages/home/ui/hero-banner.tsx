@@ -119,7 +119,7 @@ function HeroBanner() {
       <Paper
         elevation={4}
         sx={{
-          flex: "0 1 440px",
+          flex: "0 1 400px",
           alignSelf: { xs: "center", md: "stretch" },
           width: { xs: "100%", md: "auto" },
         }}
