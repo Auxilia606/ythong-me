@@ -8,6 +8,7 @@ import Square3Stack3dSolid from "@/shared/icon/square-3-stack-3d-solid";
 import UserGroupSolid from "@/shared/icon/user-group-solid";
 import {
   Box,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -115,7 +116,12 @@ const techItems = [
   {
     title: "Architecture Design",
     description: [
-      "Feature Sliced Design 기반 설계",
+      <>
+        <Link href="https://feature-sliced.design/docs/get-started/overview">
+          Feature Sliced Design
+        </Link>{" "}
+        기반 설계
+      </>,
       "Design System 구축",
       "상태 관리 표준화",
     ],
