@@ -52,6 +52,7 @@ const project: ProjectCardProps[] = [
       "@tanstack/router",
       "@tanstack/react-query",
     ],
+    link: "https://typical-earwig-65a.notion.site/MayAICC-AI-3873513228778040bd09d1d28d9e74c0",
   },
   {
     id: "dweax004",
@@ -60,6 +61,7 @@ const project: ProjectCardProps[] = [
       "• 맞춤형 데이터레시피 생성 서비스 고도화\n• 맞춤지원사업 프로세스 개편\n• 자원예약 시스템, 경진대회 신청/관리 시스템 구축",
     image: "./project/prj-2025-datahub.png",
     skill: ["React", "material-ui", "@tanstack/react-query", "draft.js"],
+    link: "https://typical-earwig-65a.notion.site/38735132287780069123f08278e58a2c",
   },
   {
     id: "dweax003",
@@ -68,6 +70,7 @@ const project: ProjectCardProps[] = [
       "• 관리자 플랫폼 아키텍처 구축\n• 권한 기반 메뉴 관리 시스템 개발\n• AI융합서비스 운영 관리 기능 개발",
     image: "./project/prj-2024-jb.png",
     skill: ["Next.js", "material-ui", "@tanstack/react-query", "react-quill"],
+    link: "https://typical-earwig-65a.notion.site/AI-Admin-38735132287780c6b0f8d20917d187ac",
   },
   {
     id: "dweax002",
@@ -76,6 +79,7 @@ const project: ProjectCardProps[] = [
       "• 통합 검색 서비스 개발\n• 데이터 레시피 등록 및 관리 기능 개발\n• 맞춤지원사업 신청 및 관리 기능 개발",
     image: "./project/prj-2024-datahub.png",
     skill: ["React", "material-ui", "@tanstack/react-query", "draft.js"],
+    link: "https://typical-earwig-65a.notion.site/38735132287780069123f08278e58a2c",
   },
   {
     id: "dweax001",

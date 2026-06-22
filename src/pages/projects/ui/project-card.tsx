@@ -6,6 +6,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { Link } from "@/shared/component/link";
+import ArrowTopRightOnSquare from "@/shared/icon/arrow-top-right-on-square";
 
 type ProjectCardProps = {
   id: string;
@@ -13,9 +15,33 @@ type ProjectCardProps = {
   description: string;
   image: string;
   skill: string[];
+  link?: string;
 };
 
-function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
+const titleSx = {
+  fontSize: { xs: 20, md: 24 },
+  lineHeight: 1.25,
+};
+
+const linkedTitleSx = {
+  ...titleSx,
+  color: "inherit",
+  cursor: "pointer",
+  textDecoration: "none",
+  "&:hover": {
+    color: "primary.main",
+    textDecoration: "underline",
+    textUnderlineOffset: "4px",
+  },
+};
+
+function ProjectCard({
+  title,
+  description,
+  image,
+  skill,
+  link,
+}: ProjectCardProps) {
   return (
     <Card sx={{ height: "100%" }}>
       <CardMedia
@@ -26,17 +52,30 @@ function ProjectCard({ title, description, image, skill }: ProjectCardProps) {
       />
       <CardContent>
         <Stack spacing={1.5}>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{
-              fontSize: { xs: 20, md: 24 },
-              lineHeight: 1.25,
-            }}
-          >
-            {title}
-          </Typography>
+          {link ? (
+            <Typography
+              gutterBottom
+              variant="h5"
+              component={Link}
+              href={link}
+              sx={linkedTitleSx}
+            >
+              {title}
+              <ArrowTopRightOnSquare
+                aria-hidden
+                sx={{ ml: 0.75, fontSize: "0.85em", verticalAlign: "-0.1em" }}
+              />
+            </Typography>
+          ) : (
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={titleSx}
+            >
+              {title}
+            </Typography>
+          )}
           <Typography
             variant="body2"
             color="textSecondary"
